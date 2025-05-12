@@ -1,0 +1,33 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #24384d; border-bottom: 1px solid #ddd;">
+    <div class="d-flex align-items-center w-100 justify-content-between px-3">
+
+        <div class="d-flex align-items-center">
+            <!-- Botão de menu recolhível -->
+            <div class="iq-menu-bt-sidebar mr-2">
+                <i class="las la-bars wrapper-menu" style="font-size: 1.5rem;"></i>
+            </div>
+
+            <!-- Logo -->
+            <a href="{% url 'listar_alunos' %}" class="header-logo d-flex align-items-center">
+                <img src="{% static 'assets/images/logo.png' %}" class="img-fluid rounded-normal" alt="logo"
+                     style="height: 30px;">
+                <h5 class="logo-title ml-2 mb-0">PersonalGestão</h5>
+            </a>
+        </div>
+        <div class="iq-search-bar device-search">
+            <form class="searchbox">
+                <input type="text" class="text search-input" placeholder="Pesquisar...">
+                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+            </form>
+        </div>
+
+        <!-- Botão sair -->
+        <form action="{% url 'logout' %}" method="post" style="margin: 0;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Sair</button>
+        </form>
+
+    </div>
+</nav>

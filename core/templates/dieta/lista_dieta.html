@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Listagem de clientes
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Dietas do aluno {{ aluno.nome }}</h3>
+    </div>
+
+    <div class="box-body">
+        {% if aluno.dietas.all %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição da dieta</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dieta in aluno.dietas.all %}
+                <tr>
+                    <td>{{ dieta.data_criacao|date:"d/m/Y" }}</td>
+                    <td style="word-break: break-word; white-space: normal; max-width: 600px;">{{ dieta.descricao }}</td>
+
+                    <td>
+                        <div class="btn-group">
+                            <a href="{% url 'editar_dieta' dieta.id %}" class="btn btn-cyrcle btn-sm">
+                                <i class="fa fa-edit"></i> Editar
+                            </a>
+                            <a href="{% url 'remover_dieta' dieta.id %}" class="btn btn-danger btn-sm" title="Apagar">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <a href="{% url 'gerar_pdf_dieta' dieta.id %}" class="btn btn-info btn-sm" title="Gerar PDF">
+                                <i class="fa fa-file-pdf-o"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>Nenhuma dieta cadastrada.</p>
+        {% endif %}
+        <hr>
+        <a href="{% url 'cadastrar_dieta' aluno.id %}">
+            <button class="btn btn-primary">Cadastrar</button>
+        </a>
+    </div>
+</div>
+{% endblock content %}

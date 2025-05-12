@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Listagem de clientes
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Detalhes do aluno {{ aluno.nome }}</h3>
+    </div>
+
+    <div class="box-body">
+        {% if aluno.plano %}
+            <table class="table">
+                <thead>
+                   <tr>
+                       <th>Valor</th>
+                       <th>Status</th>
+                       <th>Data Inicio</th>
+                       <th>Data Vencimento</th>
+                       <th>Dias Restantes</th>
+                       <th>Ações</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R$ : {{ aluno.plano.valor }}</td>
+                        <td>{{ aluno.plano.status }}</td>
+                        <td>{{ aluno.plano.data_inicio }}</td>
+                        <td>{{ aluno.plano.data_vencimento }}</td>
+                        <td>{{ aluno.plano.dias_restantes }}</td>
+                        <td>
+                            <div class="btn-group">
+                                    <a href="{% url 'remover_plano' aluno.plano.id %}" class="btn btn-danger btn-sm" title="Apagar">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum plano cadastrado.</p>
+        {% endif %}
+        <hr>
+        <a href="{% url 'cadastrar_plano' aluno.id %}">
+            <button class="btn btn-primary">Cadastrar</button>
+        </a>
+    </div>
+</div>
+{% endblock content %}

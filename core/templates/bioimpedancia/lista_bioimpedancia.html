@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Listagem de clientes
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Detalhes do aluno {{aluno.nome}}</h3>
+    </div>
+
+    <div class="box-body">
+        <table class="table">
+            <thead>
+               <tr>
+
+                   <th>Data</th>
+                   <th>Peso</th>
+                   <th>Altura</th>
+                   <th>PGC % </th>
+                   <th>Cintura </th>
+                   <th>Peito </th>
+                   <th>Coxa</th>
+                   <th>Panturrilha</th>
+                   <th>Braço</th>
+                  <th>Ações</th>  <!-- Coluna nova para os botões -->
+               </tr>
+            </thead>
+            <tbody>
+                {% for bio in bioimpedancia %}
+                <tr>
+
+                    <td>{{ bio.data_medicao|date:"d/m/Y" }}</td>
+                    <td>{{ bio.peso }} kg</td>
+                    <td>{{ bio.altura }} m</td>
+                    <td>{{ bio.pct_gordura }}%</td>
+                    <td>{{ bio.cintura }} cm</td>
+                    <td>{{ bio.peito }} cm</td>
+                    <td>{{ bio.coxa }} cm</td>
+                    <td>{{ bio.panturrilha }} cm</td>
+                    <td>{{ bio.braco }} cm</td>
+                    <td>
+                        <div class="btn-group">
+                            <!-- Botão Apagar -->
+                            <a href="{% url 'remover_bioimpedancia' bio.id%}" class="btn btn-danger btn-sm" title="Apagar">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <!-- Botão Gerar PDF -->
+                            <a href="{% url 'gerar_pdf_bioimpedancia' bio.id %}" class="btn btn-info btn-sm" title="Gerar PDF">
+                                <i class="fa fa-file-pdf-o"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="11">Nenhuma avaliação cadastrada</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <a href="{% url 'cadastrar_bioimpedancia' aluno.id %}">
+            <button class="btn btn-primary">Cadastrar</button>
+        </a>
+    </div>
+</div>
+{% endblock content %}

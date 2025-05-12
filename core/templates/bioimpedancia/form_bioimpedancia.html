@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{%load meus_filtros%}
+{% block title %}
+Cadastro de clientes
+{% endblock title %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="boxtitle">Cadastro de Bioimpedancia</h3>
+        </div>
+        <div class="box-body">  <!-- Correção aqui: 'box-body' em vez de 'box-boddy' -->
+            <form method="POST">
+                {% csrf_token %}
+
+
+
+                <div class="form-group">
+                    <label> Peso (KG):</label>
+                    {{ form_bioimpedancia.peso|addclass:'form-control'  }}
+                </div>
+
+                <div class="form-group">
+                    <label> Altura :</label>
+                    {{ form_bioimpedancia.altura|addclass:'form-control'  }}
+                </div>
+
+                <div class="form-group">
+                    <label> Percentual de gordura(%):</label>
+                    {{ form_bioimpedancia.pct_gordura|addclass:'form-control' }}
+                </div>
+
+                 <div class="form-group">
+                    <label> Medida Cintura:</label>
+                    {{ form_bioimpedancia.cintura|addclass:'form-control' }}
+                </div>
+
+                <div class="form-group">
+                    <label> Medida Peito:</label>
+                    {{ form_bioimpedancia.peito|addclass:'form-control' }}
+                </div>
+
+
+                 <div class="form-group">
+                      <label> Medida Coxa (lado dominante):</label>
+                      {{ form_bioimpedancia.coxa|addclass:'form-control' }}
+                  </div>
+
+                  <div class="form-group">
+                      <label> Medida Panturrilha (lado dominante):</label>
+                      {{ form_bioimpedancia.panturrilha|addclass:'form-control' }}
+                  </div>
+
+                  <div class="form-group">
+                      <label> Medida Braço(lado dominante):</label>
+                      {{ form_bioimpedancia.braco|addclass:'form-control' }}
+                  </div>
+
+                  <div class="form-group">
+                      <label> Data da Avaliação:</label>
+                      {{ form_bioimpedancia.data_medicao|addclass:'form-control' }}
+                  </div>
+
+
+
+              <div class="form-group">
+                    <input type="submit" class="btn btn-primary" name="Cadastrar" value="Cadastrar">
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Listagem de clientes
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Detalhes do aluno {{aluno.nome}}</h3>
+    </div>
+
+    <div class="box-body">
+        <table class="table">
+            <thead>
+               <tr>
+                   <th>Nome</th>
+                   <th>Dieta</th>
+                   <th>Bioimpendancia</th>
+               </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>{{aluno.nome}}</td>
+                    <td><a href="{% url 'listar_dieta' aluno.id %}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-line-chart"></i> Ver Dietas
+                        </a></td>
+                    <td><a href="{% url 'listar_bioimpedancia' aluno.id %}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-line-chart"></i> Ver Avaliações
+                        </a></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr>
+        <a href="{% url 'cadastrar_aluno' %}">
+            <button class="btn btn-primary">Cadastrar</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

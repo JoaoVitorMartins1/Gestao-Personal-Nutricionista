@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+EXCLUSAO DE ALUNO
+{% endblock title %}
+
+{%block content%}
+<div class="box box-primary">
+     <div class="box-header with-border">
+            <h3 class="box-title">Deseja APAGAR A AVALIAÇÃO DO {{bioimpedancia.aluno.nome}}, FEITA NA DATA  ?  </h3>
+     </div>
+    <div class="box-body">
+        <h5>NOME: {{bioimpedancia.aluno.nome}}</h5>
+        <h5>DATA DA AVALIAÇÃO:{{bioimpedancia.data_medicao}}</h5>
+
+    </div>
+
+    <form method="POST">
+        {%csrf_token%}
+        <button class="btn btn-danger pull-right" type="submit">Remover</button>
+    </form>
+    <a href="{% url 'listar_bioimpedancia' bioimpedancia.aluno.id%}" ><button class="btn btn-primary">Voltar</button></a>
+
+</div>
+{%endblock content%}>
