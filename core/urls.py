@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import aluno_views, bioimpedancia_views, gerar_pdf, plano_views, user_views,dieta_views
+from .views import aluno_views, bioimpedancia_views, gerar_pdf, plano_views, user_views,dieta_views,dashboard_view
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -28,4 +28,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('usuarios/cadastrar/', user_views.cadastrar_usuario_personal, name='cadastrar_usuario_personal'),
+    # _____________________________________________________________________________________________________________________
+    path('dashboard/', dashboard_view.dashboard, name='dashboard'),
 ]
+

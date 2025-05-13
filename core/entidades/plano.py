@@ -1,3 +1,6 @@
+from datetime import date
+
+
 class Plano:
     def __init__(self,aluno,valor,data_inicio,data_vencimento,status):
         self.__aluno=aluno
@@ -48,3 +51,7 @@ class Plano:
     @status.setter
     def status(self, status):
         self.__status = status
+
+    @property
+    def esta_ativo(self):
+        return self.__data_vencimento >= date.today()
