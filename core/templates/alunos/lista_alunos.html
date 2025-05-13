@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
 {% block title %}
-
-
 Listagem de clientes
 {% endblock title %}
 
@@ -20,7 +18,7 @@ Listagem de clientes
                    <th>Telefone</th>
                    <th>Email</th>
                    <th>Ações</th>
-                   <th>Dias restantes</th>
+                   <th>Status do Plano</th>
                </tr>
             </thead>
             <tbody>
@@ -37,7 +35,13 @@ Listagem de clientes
                     <td>
                         {% with aluno.plano as plano %}
                             {% if plano %}
-                                {{ plano.dias_restantes }} Dias restantes
+                                {% if plano.dias_restantes >= 0 %}
+                                    {{ plano.dias_restantes }} Dias restantes
+                                {% else %}
+                                    <span style="color: #F44336;">
+                                        ⚠️ Vencido em {{ plano.data_vencimento|date:"d/m/Y" }}
+                                    </span>
+                                {% endif %}
                                 <a href="{% url 'listar_plano' aluno.id %}" class="btn btn-info btn-sm" title="Ver Plano">
                                     <i class="fa fa-info"></i> Plano
                                 </a>
@@ -66,7 +70,6 @@ Listagem de clientes
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Sair</button>
         </form>
-
     </div>
 </div>
 {% endblock content %}

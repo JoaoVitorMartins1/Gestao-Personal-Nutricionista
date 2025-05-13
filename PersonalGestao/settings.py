@@ -132,7 +132,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/core/listar_alunos' # ou onde for seu painel principal
+LOGIN_REDIRECT_URL = '/core/dashboard/'# ou onde for seu painel principal
 LOGOUT_REDIRECT_URL = 'login'
 
 # IMPORTANTE: dizer ao Django qual é seu modelo de usuário

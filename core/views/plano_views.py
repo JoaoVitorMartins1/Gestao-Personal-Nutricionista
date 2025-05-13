@@ -16,6 +16,15 @@ def cadastrar_plano(request, aluno_id):
         if request.method == 'POST':
             form_plano = plano_forms.PlanoForm(request.POST)
             if form_plano.is_valid():
+                # Verifica se já existe plano para esse aluno
+                if hasattr(aluno, 'plano'):
+                    mensagem_erro = "Este cliente já tem um plano cadastrado. Exclua esse plano para adicionar outro."
+                    return render(request, 'plano/form_plano.html', {
+                        'form_plano': form_plano,
+                        'aluno': aluno,
+                        'mensagem_erro': mensagem_erro
+                    })
+
                 valor = form_plano.cleaned_data['valor']
                 data_inicio = form_plano.cleaned_data['data_inicio']
                 data_vencimento = form_plano.cleaned_data['data_vencimento']
@@ -40,6 +49,7 @@ def cadastrar_plano(request, aluno_id):
         })
 
     return redirect('listar_alunos')
+
 
 #__________________________________________________________________________________________________________________________________________________
 

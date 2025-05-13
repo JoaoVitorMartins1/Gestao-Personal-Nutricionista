@@ -4,7 +4,8 @@ from ..forms import aluno_forms
 from ..services import aluno_service
 from django.shortcuts import redirect, render
 
-#__________________________________________________________________________________________________________________________________________________
+
+# __________________________________________________________________________________________________________________________________________________
 
 @login_required
 def cadastrar_aluno(request):
@@ -31,18 +32,27 @@ def cadastrar_aluno(request):
 
     return render(request, 'alunos/form_aluno.html', {'form_aluno': form_aluno})
 
-#__________________________________________________________________________________________________________________________________________________
+
+# __________________________________________________________________________________________________________________________________________________
+
 
 @login_required
 def listar_alunos(request):
+    termo = request.GET.get('q', '')
+
     if request.user.is_superuser:
         alunos = aluno_service.listar_alunos(request)
     else:
         alunos = aluno_service.listar_alunos(request.user.personal)
 
+    # Aplica filtro de busca se houver termo
+    if termo:
+        alunos = alunos.filter(nome__icontains=termo)
+
     return render(request, 'alunos/lista_alunos.html', {'alunos': alunos})
 
-#__________________________________________________________________________________________________________________________________________________
+
+# __________________________________________________________________________________________________________________________________________________
 
 @login_required
 def listar_aluno_id(request, id):
@@ -52,7 +62,8 @@ def listar_aluno_id(request, id):
     else:
         return redirect('listar_alunos')
 
-#__________________________________________________________________________________________________________________________________________________
+
+# __________________________________________________________________________________________________________________________________________________
 
 @login_required
 def editar_aluno(request, id):
@@ -80,7 +91,8 @@ def editar_aluno(request, id):
     else:
         return redirect('listar_alunos')
 
-#__________________________________________________________________________________________________________________________________________________
+
+# __________________________________________________________________________________________________________________________________________________
 
 @login_required
 def remover_aluno(request, id):

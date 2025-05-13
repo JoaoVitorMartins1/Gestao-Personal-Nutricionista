@@ -10,18 +10,25 @@
             </div>
 
             <!-- Logo -->
-            <a href="{% url 'listar_alunos' %}" class="header-logo d-flex align-items-center">
+            <a href="{% url 'dashboard' %}" class="header-logo d-flex align-items-center">
                 <img src="{% static 'assets/images/logo.png' %}" class="img-fluid rounded-normal" alt="logo"
                      style="height: 30px;">
                 <h5 class="logo-title ml-2 mb-0">PersonalGestão</h5>
             </a>
         </div>
+        <!-- Search só na tela de listar alunos -->
+        {% if request.resolver_match.url_name == 'listar_alunos' %}
         <div class="iq-search-bar device-search">
-            <form class="searchbox">
-                <input type="text" class="text search-input" placeholder="Pesquisar...">
-                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+            <form class="searchbox d-flex align-items-center" method="get" action="{% url 'listar_alunos' %}"
+                  style="gap: 5px;">
+                <input type="text" name="q" class="form-control" placeholder="Buscar aluno..."
+                       value="{{ request.GET.q }}" style="padding-left: 12px;">
+                <button type="submit" class="btn btn-light border">
+                    <i class="ri-search-line"></i>
+                </button>
             </form>
         </div>
+        {% endif %}
 
         <!-- Botão sair -->
         <form action="{% url 'logout' %}" method="post" style="margin: 0;">
