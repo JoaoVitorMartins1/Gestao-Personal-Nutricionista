@@ -10,14 +10,18 @@ class User(AbstractUser):
 
 
 class Personal(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Isso substitui o id padrão
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)  # Isso substitui o id padrão
     telefone = models.CharField(max_length=20)
     nome = models.CharField(max_length=25)
+
+
 
     @property
     def id(self):
         return self.user_id  # Cria uma propriedade id que retorna user_id
 
+    def __str__(self):
+        return self.nome
 class Aluno(models.Model):
     personal=models.ForeignKey(Personal, on_delete=models.CASCADE, related_name='alunos')
     nome=models.CharField(max_length=25,null=False, blank=False)
@@ -31,7 +35,7 @@ class Bioimpedancia(models.Model):
     aluno=models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name='avaliacoes')
     data_medicao = models.DateField()
     peso = models.DecimalField(max_digits=5, decimal_places=2)  # em kg
-    altura = models.DecimalField(max_digits=3, decimal_places=2)  # em metros
+    altura = models.DecimalField(max_digits=4, decimal_places=2)  # em metros
     pct_gordura = models.DecimalField(max_digits=4, decimal_places=1)  # 15.5%
     # Medidas corporais (em cm):
     cintura = models.DecimalField(max_digits=5, decimal_places=2)
