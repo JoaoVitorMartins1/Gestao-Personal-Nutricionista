@@ -1,0 +1,86 @@
+/* _________________________________________________________________________________________________________________________________________
+
+   NAVBAR SUPERIOR
+
+
+/* Navbar - branco levemente acinzentado */
+.iq-top-navbar .iq-navbar-custom {
+  background: linear-gradient(to right, #D3D3D3, #A0A0A0) !important;
+  border-bottom: 1px solid #ddd !important;
+}
+
+/* _________________________________________________________________________________________________________________________________________
+   SIDEBAR (MENU LATERAL)
+
+
+/* Fundo da sidebar */
+.iq-sidebar {
+  background-color: #24384d !important;
+
+
+
+}
+
+/* Garante que o botão permaneça visível mesmo com sidebar recolhida */
+.iq-menu-bt-sidebar {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1050; /* acima da sidebar */
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Itens do menu da sidebar com sombra, padding e borda arredondada */
+.iq-menu > li > a {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.90);
+  padding: 10px 15px;
+  margin: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+/* Hover e item ativo na sidebar */
+.iq-menu > li > a:hover,
+.iq-menu > li.active > a {
+  background-color: #f50400;
+  color: #333;
+}
+
+/* Deixa os textos do menu da sidebar brancos */
+.iq-sidebar-menu .iq-menu li a {
+  color: #ffffff !important;
+}
+
+
+
+/* _________________________________________________________________________________________________________________________________________
+
+CONTEÚDO GERAL E ESTÉTICA DAS PÁGINAS
+
+
+/* Fundo geral do body */
+body {
+  background-color: #f4f6f8;
+}
+
+/* Blocos principais de conteúdo */
+.pagina-conteudo {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+  margin-top: 30px;
+}
+
+
+
+/* _________________________________________________________________________________________________________________________________________
+
+   LOGO E TEXTO
+
+
+/* Deixa o título da logo branco */
+.header-logo .logo-title {
+  color: #ffffff !important;
+}

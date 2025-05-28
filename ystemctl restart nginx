@@ -1,0 +1,20 @@
+[0;1;31m×[0m painel.service - Gunicorn daemon for PersonalGestao
+     Loaded: loaded (]8;;file://ubuntu-s-1vcpu-1gb-nyc3-01/etc/systemd/system/painel.service/etc/systemd/system/painel.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Tue 2025-05-27 00:37:33 UTC; 5s ago
+   Duration: 387ms
+ Invocation: 0c0dd19ed6d44cc08a3fc7cd5f8175c0
+    Process: 25622 ExecStart=/root/Gestao-Personal-Nutricionista/venv/bin/gunicorn --workers 3 --bind unix:/root/Gestao-Personal-Nutricionista/painel.sock PersonalGestao.wsgi:application [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 25622 (code=exited, status=1/FAILURE)
+   Mem peak: 39.8M
+        CPU: 347ms
+
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:     self.stop()
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:   File "/root/Gestao-Personal-Nutricionista/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 395, in stop
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:     time.sleep(0.1)
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:   File "/root/Gestao-Personal-Nutricionista/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:     self.reap_workers()
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:   File "/root/Gestao-Personal-Nutricionista/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]:     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 gunicorn[25622]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 systemd[1]: [0;1;39m[0;1;31m[0;1;39mpainel.service: Main process exited, code=exited, status=1/FAILURE[0m
+May 27 00:37:33 ubuntu-s-1vcpu-1gb-nyc3-01 systemd[1]: [0;1;38:5:185m[0;1;39m[0;1;38:5:185mpainel.service: Failed with result 'exit-code'.[0m
