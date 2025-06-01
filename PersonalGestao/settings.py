@@ -21,9 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hg0pgjo2o*eq^a$xmyx0y2(4%5(u)*=qm*bj+wz652kph90e*4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False  #prod
+# DEBUG = True #local
 
-ALLOWED_HOSTS = ['138.197.108.248']
+ALLOWED_HOSTS = ['138.197.108.248']#prod
+# ALLOWED_HOSTS = ['*']#local
 
 # Application definition
 
@@ -140,4 +142,5 @@ AUTH_USER_MODEL = 'core.User'
 STATIC_URL = '/static/'
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']#comentar para subir em prod
 
